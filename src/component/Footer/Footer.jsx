@@ -1,0 +1,33 @@
+import React from 'react'
+import classes from './Footer.module.css'
+import github from '../../images/github.png'
+import linkedin from '../../images/linkedin.png'
+
+export default class Footer extends React.Component {
+	render() {
+		return (
+			<footer className={classes.footer}>
+				<div className={classes.footer__container}>
+					<div className={classes.footer__content}>
+						<div className={classes.title}>
+							Contacts:
+						</div>
+						<div className={classes.contacts}>
+							<div className={classes.contactLink}>
+								<a href="https://github.com/vitoldi" target="_blank">
+									<img src={github} height='30px' width='30px' /><span>GitHub</span></a>
+							</div>
+							<div className={classes.contactLink}>
+								<a href="https://www.linkedin.com/in/vitali-logvin-575001212" target="_blank">
+									<img src={linkedin} height='30px' width='30px' /><span>Linkedin</span></a>
+							</div>
+						</div>
+					</div>
+					<div class={classes.year}>
+						V.Logvin, 2021
+					</div>
+				</div>
+			</footer>
+		)
+	}
+}

@@ -1,0 +1,79 @@
+.filter {
+	margin: 20px auto;
+	font-size: 25px;
+	padding: 20px 20px 0 20px;
+	border-radius: 2%;
+	background-color: #27282d;
+	color: #fbefdf;
+	width: 300px;
+}
+
+.form__hidden {
+	display: none;
+}
+
+.form__show {
+	display: block;
+}
+
+.filterForm {
+	display: flex;
+	border-top: 1px solid #fbefdf;
+	padding: 20px 0 0 0;
+}
+
+.title {
+	text-align: center;
+	font-size: 30px;
+	margin: 0 0 10px 0;
+}
+
+.inputGroup__input {
+	margin: 0 0 15px 0;
+}
+
+.inputGroup__input input {
+	font-size: 15px;
+	padding: 5px;
+	border: 1px solid #000;
+	border-radius: 6%;
+}
+
+
+.button__submit {
+	text-align: right;
+}
+
+.button__submit button {
+	font-size: 17px;
+	padding: 7px;
+	border-radius: 10%;
+	background-color: #fbefdf;
+	margin: 0 0 20px 0;
+}
+
+.button__submit button:hover {
+	box-shadow: 0 0 10px 0px #fff;
+}
+
+.openButton {
+	height: 30px;
+	border-top: 1px solid #fbefdf;
+	background: url('../../../images/navarrow.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.closeButton {
+	height: 30px;
+	border-top: 1px solid #fbefdf;
+	background: url('../../../images/arrowTop.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.openButton:hover {
+	cursor: pointer;
+}

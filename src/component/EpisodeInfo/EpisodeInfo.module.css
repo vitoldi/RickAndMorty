@@ -1,0 +1,97 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 40px 100px;
+}
+
+.arrows {
+	display: flex;
+	margin: 40px 0 0 0;
+}
+
+.arrows > div {
+	margin: 0 40px;
+}
+
+.previos:hover, .next:hover {
+	cursor: pointer;
+}
+
+.episodeinfoCard {
+	padding: 40px;
+	background-color: #27282d;
+	color: #fbefdf;
+	font-size: 25px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.cardElement {
+	margin: 0 0 10px 0;
+}
+
+.characters__wrapper {
+	display: flex;
+	margin: 10px 0 0 0;
+}
+
+.characters__title {
+	margin: 0 10px 0 0;
+}
+
+.characters {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.residents__item {
+	width: 150px;
+	text-align: center;
+	margin: 0 0 20px 10px;
+}
+
+.residents__item img {
+	border-radius: 50%;
+}
+
+.residents__item a {
+	text-decoration: underline;
+	color: #fbefdf;
+	font-size: 20px;
+}
+
+@media (max-width: 767px) {
+	.wrapper {
+	margin: 40px;
+	}
+	.episodeinfoCard {
+	padding: 20px;
+	}
+}
+
+@media (max-width: 560px) {
+	.episodeinfoCard {
+	padding: 20px;
+	}
+	.wrapper {
+	margin: 20px;
+	}
+	.characters__wrapper {
+	display: flex;
+	flex-direction: column;
+	}
+}
+
+@media (max-width: 385px) {
+	.characters {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px 0 0 0;
+	}
+}
+

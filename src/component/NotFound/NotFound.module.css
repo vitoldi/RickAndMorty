@@ -1,0 +1,44 @@
+.paginator__form {
+    text-align: center;
+    margin: 0 auto;
+    margin: 20px auto; 
+}
+
+.paginator {
+    margin: 0 auto;
+    display: flex;
+    margin: 20px auto;
+}
+
+.paginator > div {
+    margin: 0 5px;
+}
+
+.pageNumbers {
+    display: flex;
+}
+
+.number {
+    margin: 0 2px;
+}
+
+.currentPage {
+    text-decoration: underline;
+}
+
+.allPages {
+    font-size: 30px;
+}
+
+.pageNumbers {
+    font-size: 25px;
+}
+
+.next, .previos {
+    position: relative;
+    top: 1px;
+}
+
+.pageNumbers:hover, .next:hover, .previos:hover {
+    cursor: pointer;
+}
