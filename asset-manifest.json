@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/vitoldi/RickAndMorty/static/css/main.31f210b7.chunk.css",
+    "main.js": "/vitoldi/RickAndMorty/static/js/main.ffc537c7.chunk.js",
+    "main.js.map": "/vitoldi/RickAndMorty/static/js/main.ffc537c7.chunk.js.map",
+    "runtime-main.js": "/vitoldi/RickAndMorty/static/js/runtime-main.a314675b.js",
+    "runtime-main.js.map": "/vitoldi/RickAndMorty/static/js/runtime-main.a314675b.js.map",
+    "static/js/2.6c068e5b.chunk.js": "/vitoldi/RickAndMorty/static/js/2.6c068e5b.chunk.js",
+    "static/js/2.6c068e5b.chunk.js.map": "/vitoldi/RickAndMorty/static/js/2.6c068e5b.chunk.js.map",
+    "index.html": "/vitoldi/RickAndMorty/index.html",
+    "static/css/main.31f210b7.chunk.css.map": "/vitoldi/RickAndMorty/static/css/main.31f210b7.chunk.css.map",
+    "static/js/2.6c068e5b.chunk.js.LICENSE.txt": "/vitoldi/RickAndMorty/static/js/2.6c068e5b.chunk.js.LICENSE.txt",
+    "static/media/5.db9a730c.gif": "/vitoldi/RickAndMorty/static/media/5.db9a730c.gif",
+    "static/media/EpisodesFilter.module.css": "/vitoldi/RickAndMorty/static/media/arrowTop.3b6c3aa6.png",
+    "static/media/Content.module.css": "/vitoldi/RickAndMorty/static/media/content3.7ce3b915.jpg",
+    "static/media/headerLogo.0462a5f9.png": "/vitoldi/RickAndMorty/static/media/headerLogo.0462a5f9.png",
+    "static/media/linkedin.65300b6f.png": "/vitoldi/RickAndMorty/static/media/linkedin.65300b6f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a314675b.js",
+    "static/js/2.6c068e5b.chunk.js",
+    "static/css/main.31f210b7.chunk.css",
+    "static/js/main.ffc537c7.chunk.js"
+  ]
+}
