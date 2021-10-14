@@ -2,9 +2,8 @@ import React from 'react'
 import classes from './LocationsFilter.module.css'
 import { Formik, Field, Form } from 'formik'
 
-export default class LocationsFilter extends React.Component {
+const LocationsFilter = (props) => {
 
-	render() {
 		const showFilter = () => {
 			const filter = document.getElementById('form__locations')
 			if (filter.className === classes.form__hidden) {
@@ -26,12 +25,12 @@ export default class LocationsFilter extends React.Component {
 			<h2 className={classes.title}>Filters</h2>
 			<Formik
 					initialValues={{ 
-						name: this.props.filter.name, 
-						dimension: this.props.filter.dimension,
-						type: this.props.filter.type}}
+						name: props.filter.name, 
+						dimension: props.filter.dimension,
+						type: props.filter.type}}
 				onSubmit={values => {
-					this.props.onChangeFilter(values)
-					this.props.onLocations(1, values)
+					props.onChangeFilter(values)
+					props.onLocations(1, values)
 				}}>
 				<Form className={classes.form__hidden} id='form__locations'>
 					<div className={classes.filterForm}>
@@ -74,4 +73,6 @@ export default class LocationsFilter extends React.Component {
 			</Formik>
 			<div className={classes.openButton} id='openButton__locations' onClick={showFilter}></div>
 		</div>
-		)}}
+		)}
+
+export default LocationsFilter

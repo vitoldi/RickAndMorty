@@ -2,9 +2,7 @@ import React from 'react'
 import classes from './EpisodesFilter.module.css'
 import { Formik, Field, Form } from 'formik'
 
-export default class EpisodesFilter extends React.Component {
-	
-	render() {
+const EpisodesFilter = (props) => {
 		const showFilter = () => {
 			const filter = document.getElementById('form__episodes')
 			if (filter.className === classes.form__hidden) {
@@ -26,11 +24,11 @@ export default class EpisodesFilter extends React.Component {
 			<h2 className={classes.title}>Episodes filter</h2>
 			<Formik
 					initialValues={{ 
-						name: this.props.filter.name, 
-						episode: this.props.filter.episode}}
+						name: props.filter.name, 
+						episode: props.filter.episode}}
 				onSubmit={values => {
-					this.props.onChangeFilter(values)
-					this.props.onEpisodes(1, values)
+					props.onChangeFilter(values)
+					props.onEpisodes(1, values)
 				}}>
 				<Form className={classes.form__hidden} id='form__episodes'>
 					<div className={classes.filterForm}>
@@ -65,4 +63,6 @@ export default class EpisodesFilter extends React.Component {
 			</Formik>
 			<div className={classes.openButton} id='openButton__episodes' onClick={showFilter}></div>
 		</div>
-		)}}
+		)}
+
+export default EpisodesFilter

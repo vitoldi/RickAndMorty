@@ -1,71 +1,64 @@
 import Locations from './Locations'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { currentPageActionCreator, getAllLocationsThunkCreator, locationsFilterActionCreator } from '../../redux/locationsReducer'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { currentLocationActionCreator } from '../../redux/locationInfoReducer'
 import NotFound from '../NotFound/NotFound'
 import LocationsFilter from './LocationsFilter/LocationsFilter'
 import Preloader from '../Preloader/Preloader'
 
-class LocationsContainer extends React.Component {
-	componentDidMount() {
-		this.props.onLocations(this.props.currentPage, this.props.filter)
-	}
+const LocationsContainer = (props) => {
+	const allLocations = useSelector(state => state.locationsPage.allLocations)
+	const currentPage = useSelector(state => state.locationsPage.currentPage)
+	const filter = useSelector(state => state.locationsPage.filter)
+	const error = useSelector(state => state.locationsPage.error)
+	const loading = useSelector(state => state.locationsPage.loading)
 
-	render () {
-		if (this.props.loading) {
+	const dispatch = useDispatch()
+
+	const onLocations = (currentPage, filter) => {
+			dispatch(getAllLocationsThunkCreator(dispatch, currentPage, filter))
+		}
+	const	onChangePage = (page) => {
+			dispatch(currentPageActionCreator(page))
+		}
+	const onChangeLocation = (location) => {
+			dispatch(currentLocationActionCreator(location))
+			}
+	const onChangeFilter = (filter) => {
+				dispatch(locationsFilterActionCreator(filter))
+			}
+
+	useEffect(() => {
+		onLocations(currentPage, filter)
+	}, [currentPage, filter.name, filter.dimension, filter.type])
+	
+	if (loading) {
 			return <Preloader />
 		}
-		if (this.props.error) {
+		if (error) {
 			return (
 				<div>
 					<LocationsFilter
-						onChangeFilter={this.props.onChangeFilter}
-						onLocations={this.props.onLocations}
-						filter={this.props.filter} />
+						onChangeFilter={onChangeFilter}
+						onLocations={onLocations}
+						filter={filter} />
 					<NotFound />
 				</div>
 			)
 		} else {	return (
 			<Locations
-				allLocations={this.props.allLocations}
-				currentPage={this.props.currentPage}
-				onChangePage={this.props.onChangePage}
-				onLocations={this.props.onLocations}
-				onChangeLocation={this.props.onChangeLocation} 
-				filter={this.props.filter}
-				onChangeFilter={this.props.onChangeFilter}
+				allLocations={allLocations}
+				currentPage={currentPage}
+				onChangePage={onChangePage}
+				onLocations={onLocations}
+				onChangeLocation={onChangeLocation} 
+				filter={filter}
+				onChangeFilter={onChangeFilter}
 				/>
 		)
-	}}
-}
-
-const mapDispatchToProps = dispatch => {
-	return {
-		onLocations: (currentPage, filter) => {
-			dispatch(getAllLocationsThunkCreator(dispatch, currentPage, filter))
-		},
-		onChangePage: (page) => {
-			dispatch(currentPageActionCreator(page))
-		},
-		onChangeLocation: (location) => {
-			dispatch(currentLocationActionCreator(location))
-		},
-		onChangeFilter: (filter) => {
-			dispatch(locationsFilterActionCreator(filter))
-		}
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		allLocations: state.locationsPage.allLocations,
-		currentPage: state.locationsPage.currentPage,
-		filter: state.locationsPage.filter,
-		error: state.locationsPage.error,
-		loading: state.locationsPage.loading
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LocationsContainer)
+export default LocationsContainer
  

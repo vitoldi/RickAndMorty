@@ -1,74 +1,66 @@
 import Characters from './Characters'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { charactersFilterActionCreator, currentPageActionCreator, getAllCharactersThunkCreator } from '../../redux/charactersReducer'
-import React from 'react'
+import React, { useEffect} from 'react'
 import { currentCharacterActionCreator } from '../../redux/charinfoReducer'
 import NotFound from '../NotFound/NotFound'
 import CharactersFilter from './CharactersFilter/CharactersFilter'
 import Preloader from '../Preloader/Preloader'
 
-class CharactersContainer extends React.Component {
-	componentDidMount() {
-		this.props.onCharacters(this.props.currentPage, this.props.filter)
-	}
+const CharactersContainer = () => {
 
-	render () {
-		if (this.props.loading) {
+	const allCharacters = useSelector(state => state.charactersPage.allCharacters)
+	const currentPage = useSelector(state => state.charactersPage.currentPage)
+	const filter = useSelector(state => state.charactersPage.filter)
+	const error = useSelector(state => state.charactersPage.error)
+	const loading = useSelector(state => state.charactersPage.loading)
+
+	const dispatch = useDispatch()
+
+	const onCharacters = (currentPage, filter) => {
+		dispatch(getAllCharactersThunkCreator(dispatch, currentPage, filter))
+	}
+	const	onChangePage = (page) => {
+			dispatch(currentPageActionCreator(page))
+		}
+	const	onChangeCharacter = (character) => {
+				dispatch(currentCharacterActionCreator(character))
+			}
+	const onChangeFilter = (filter) => {
+					dispatch(charactersFilterActionCreator(filter))
+			}
+
+	useEffect(() => {
+		onCharacters(currentPage, filter)
+	}, [currentPage, filter.name, filter.status, filter.species, filter.gender, filter.type])
+
+		if (loading) {
 			return <Preloader />
 		}
 
-		if (this.props.error) {
+		if (error) {
 			return (
 			<div>
 					<CharactersFilter
-						onChangeFilter={this.props.onChangeFilter}
-						onCharacters={this.props.onCharacters}
-						filter={this.props.filter} />
+						onChangeFilter={onChangeFilter}
+						onCharacters={onCharacters}
+						filter={filter} />
 					<NotFound />
 			</div>
 			)
 		} else {
 			return (
 				<Characters
-					allCharacters={this.props.allCharacters}
-					currentPage={this.props.currentPage}
-					onChangePage={this.props.onChangePage}
-					onCharacters={this.props.onCharacters}
-					onChangeCharacter={this.props.onChangeCharacter}
-					onChangeFilter={this.props.onChangeFilter}
-					filter={this.props.filter} />
+					allCharacters={allCharacters}
+					currentPage={currentPage}
+					onChangePage={onChangePage}
+					onCharacters={onCharacters}
+					onChangeCharacter={onChangeCharacter}
+					onChangeFilter={onChangeFilter}
+					filter={filter} />
 			)
 		}
-	}
 }
 
-const mapDispatchToProps = dispatch => {
-	return {
-		onCharacters: (currentPage, filter) => {
-			dispatch(getAllCharactersThunkCreator(dispatch, currentPage, filter))
-		},
-		onChangePage: (page) => {
-			dispatch(currentPageActionCreator(page))
-		},
-		onChangeCharacter: (character) => {
-			dispatch(currentCharacterActionCreator(character))
-		},
-		onChangeFilter: (filter) => {
-			dispatch(charactersFilterActionCreator(filter))
-		}
-	}
-}
-
-const mapStateToProps = state => {
-	return {
-		allCharacters: state.charactersPage.allCharacters,
-		currentPage: state.charactersPage.currentPage,
-		filter: state.charactersPage.filter,
-		error: state.charactersPage.error,
-		search: state.charactersPage.search,
-		loading: state.charactersPage.loading
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CharactersContainer)
+export default CharactersContainer
  

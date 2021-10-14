@@ -1,55 +1,48 @@
 import LocationInfo from './LocationInfo'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { getLocationInfoThunkCreator, currentLocationActionCreator} from '../../redux/locationInfoReducer'
 import { currentCharacterActionCreator } from '../../redux/charinfoReducer'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Preloader from '../Preloader/Preloader'
 
-class LocationInfoContainer extends React.Component {
-	componentDidMount() {
-		this.props.onLocationInfo(this.props.currentLocation)
-	}
+const LocationInfoContainer = (props) => {
+	const locationInfo = useSelector(state => state.locationInfoPage.locationInfo)
+	const currentLocation = useSelector(state => state.locationInfoPage.currentLocation)
+	const allLocations = useSelector(state => state.locationsPage.allLocations)
+	const residents = useSelector(state => state.locationInfoPage.residents)
+	const loading = useSelector(state => state.locationInfoPage.loading)
 
-	render () {
-		if (this.props.loading) {
+	const dispatch = useDispatch()
+
+	const onLocationInfo = (currentLocation) => {
+			dispatch(getLocationInfoThunkCreator(dispatch, currentLocation))
+			}
+	const	onChangeLocation = (location) => {
+			dispatch(currentLocationActionCreator(location))
+			}
+	const onChangeCharacter = (character) => {
+			dispatch(currentCharacterActionCreator(character))
+			}
+
+	useEffect(() => {
+		onLocationInfo(currentLocation)
+	}, [currentLocation])
+
+		if (loading) {
 			return <Preloader />
 		}
+
 		return (
 			<LocationInfo
-				locationInfo={this.props.locationInfo}
-				onChangeLocation={this.props.onChangeLocation}
-				allLocations={this.props.allLocations}
-				onLocationInfo={this.props.onLocationInfo}
-				residents={this.props.residents}
-				onChangeCharacter={this.props.onChangeCharacter}
+				locationInfo={locationInfo}
+				onChangeLocation={onChangeLocation}
+				allLocations={allLocations}
+				onLocationInfo={onLocationInfo}
+				residents={residents}
+				onChangeCharacter={onChangeCharacter}
 			/>
 		)
-	}
 }
 
-const mapDispatchToProps = dispatch => {
-	return {
-		onLocationInfo: (currentLocation) => {
-			dispatch(getLocationInfoThunkCreator(dispatch, currentLocation))
-		},
-		onChangeLocation: (location) => {
-			dispatch(currentLocationActionCreator(location))
-		},
-		onChangeCharacter: (character) => {
-			dispatch(currentCharacterActionCreator(character))
-		}
-	}
-}
-
-const mapStateToProps = state => {
-	return {
-		locationInfo: state.locationInfoPage.locationInfo,
-		currentLocation: state.locationInfoPage.currentLocation,
-		allLocations: state.locationsPage.allLocations,
-		residents: state.locationInfoPage.residents,
-		loading: state.locationInfoPage.loading
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LocationInfoContainer)
+export default LocationInfoContainer
  

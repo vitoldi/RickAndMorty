@@ -4,48 +4,47 @@ import Paginator from '../paginator/Paginator'
 import classes from './Episodes.module.css'
 import EpisodesFilter from './EpisodesFilter/EpisodesFilter'
 
-export default class Episodes extends React.Component {
-	
-	render() {
-		if (this.props.allEpisodes.results) {
-			return (
-				<div className={classes.wrapper}>
+const Episodes = (props) => {
+	if (props.allEpisodes.results) {
+		return (
+			<div className={classes.wrapper}>
 
-					<EpisodesFilter
-						onChangeFilter={this.props.onChangeFilter}
-						onEpisodes={this.props.onEpisodes}
-						filter={this.props.filter} />
+				<EpisodesFilter
+					onChangeFilter={props.onChangeFilter}
+					onEpisodes={props.onEpisodes}
+					filter={props.filter} />
 
-						<div className={classes.content}>
-							{this.props.allEpisodes.results.map(ep => {
-								return (
-									<NavLink to='epinfo' className={classes.characterCard}
-									onClick={this.props.onChangeEpisode.bind(null, ep.id)}>
-										<div className={classes.characterInfo}>
-											<div className={classes.characterName}>
-												Name: {ep.name}
-											</div>
-											<div className={classes.characterSpecies}>
-												Air date: {ep.air_date}
-											</div>
-											<div className={classes.characterSpecies}>
-												Episode: {ep.episode}
-											</div>
+					<div className={classes.content}>
+						{props.allEpisodes.results.map(ep => {
+							return (
+								<NavLink to='epinfo' className={classes.characterCard}
+								onClick={props.onChangeEpisode.bind(null, ep.id)}>
+									<div className={classes.characterInfo}>
+										<div className={classes.characterName}>
+											Name: {ep.name}
 										</div>
-									</NavLink>)
-								})}
-							</div >
-						<Paginator 
-							info={this.props.allEpisodes.info}
-							currentPage={this.props.currentPage}
-							onChangePage={this.props.onChangePage} 
-							onCharacters={this.props.onEpisodes}
-							filter={this.props.filter}
-						/>
-						</div>	
-						)
-					} else {
-						return <div></div>
-					}
-	}
+										<div className={classes.characterSpecies}>
+											Air date: {ep.air_date}
+										</div>
+										<div className={classes.characterSpecies}>
+											Episode: {ep.episode}
+										</div>
+									</div>
+								</NavLink>)
+							})}
+						</div >
+					<Paginator 
+						info={props.allEpisodes.info}
+						currentPage={props.currentPage}
+						onChangePage={props.onChangePage} 
+						onCharacters={props.onEpisodes}
+						filter={props.filter}
+					/>
+					</div>	
+					)
+				} else {
+					return <div></div>
+				}
 }
+
+export default Episodes

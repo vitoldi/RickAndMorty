@@ -2,9 +2,7 @@ import React from 'react'
 import classes from './CharactersFilter.module.css'
 import { Formik, Field, Form } from 'formik'
 
-export default class CharactersFilter extends React.Component {
-
-	render() {
+const CharactersFilter = (props) => {
 		const showFilter = () => {
 			const filter = document.getElementById('form')
 			if (filter.className === classes.form__hidden) {
@@ -26,14 +24,14 @@ export default class CharactersFilter extends React.Component {
 			<h2 className={classes.title}>Filters</h2>
 			<Formik
 				initialValues={{ 
-					name: this.props.filter.name, 
-					status: this.props.filter.status, 
-					species: this.props.filter.species,
-					gender: this.props.filter.gender,
-					type: this.props.filter.type}}
+					name: props.filter.name, 
+					status: props.filter.status, 
+					species: props.filter.species,
+					gender: props.filter.gender,
+					type: props.filter.type}}
 				onSubmit={values => {
-					this.props.onChangeFilter(values)
-					this.props.onCharacters(1, values)
+					props.onChangeFilter(values)
+					props.onCharacters(1, values)
 				}}>
 				<Form className={classes.form__hidden} id='form'>
 					<div className={classes.filterForm}>
@@ -125,4 +123,6 @@ export default class CharactersFilter extends React.Component {
 			<div className={classes.openButton} id='openButton' onClick={showFilter}>
 			</div>
 		</div>
-		)}}
+		)}
+
+export default CharactersFilter

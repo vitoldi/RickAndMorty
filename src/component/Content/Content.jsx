@@ -2,17 +2,16 @@ import React from 'react'
 import classes from './Content.module.css'
 import Slider from "react-slick";
 
-export default class Content extends React.Component {
-	render() {
-				const settings = {
-					dots: true,
-					infinite: true,
-					speed: 500,
-					slidesToShow: 1,
-					slidesToScroll: 1
-				};
-				return(
-      <div className={classes.content}>
+const Content = () => {
+	const settings = {
+		dots: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1
+	};
+	return(
+		<div className={classes.content}>
 				<Slider className={classes.slider} {...settings} autofocus>
 					<div className={classes.content__1}>
 						<p>
@@ -62,7 +61,9 @@ export default class Content extends React.Component {
 						</p>
 					</div>
 				</Slider>
-      </div >
-    );
-	}
+		</div >
+	);
+
 }
+
+export default Content

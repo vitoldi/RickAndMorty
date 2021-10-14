@@ -1,61 +1,52 @@
 import CharacterInfo from './CharacterInfo'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { getCharacterInfoThunkCreator, currentCharacterActionCreator } from '../../redux/charinfoReducer'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { currentLocationActionCreator } from '../../redux/locationInfoReducer'
 import { currentEpisodeActionCreator } from '../../redux/episodeInfoReducer'
 import Preloader from '../Preloader/Preloader'
 
-class CharacterInfoContainer extends React.Component {
-	componentDidMount() {
-		this.props.onCharacterInfo(this.props.currentCharacter)
+const CharacterInfoContainer = () => {
+	const characterInfo = useSelector(state => state.charinfoPage.characterInfo)
+	const currentCharacter = useSelector(state => state.charinfoPage.currentCharacter)
+	const countCharacters = useSelector(state => state.charactersPage.allCharacters)
+	const characterEpisodes = useSelector(state => state.charinfoPage.characterEpisodes)
+	const loading = useSelector(state => state.charinfoPage.loading)
+
+	const dispatch = useDispatch()
+
+	const onCharacterInfo = (currentCharacter) => {
+		dispatch(getCharacterInfoThunkCreator(dispatch, currentCharacter))
+	}
+	const onChangeCharacter = (character) => {
+		dispatch(currentCharacterActionCreator(character))
+	}
+	const onChangeLocation = (location) => {
+		dispatch(currentLocationActionCreator(location))
+	}
+	const onChangeEpisode = (episode) => {
+		dispatch(currentEpisodeActionCreator(episode))
 	}
 
-	render () {
-		if (this.props.loading) {
+	useEffect(() => {
+		onCharacterInfo(currentCharacter)
+	}, currentCharacter)
+
+		if (loading) {
 			return <Preloader />
 		}
 
 		return (
 			<CharacterInfo
-				characterInfo={this.props.characterInfo}
-				onChangeCharacter={this.props.onChangeCharacter}
-				countCharacters={this.props.countCharacters.info.count}
-				onCharacterInfo={this.props.onCharacterInfo}
-				characterEpisodes={this.props.characterEpisodes}
-				onChangeLocation={this.props.onChangeLocation}
-				onChangeEpisode={this.props.onChangeEpisode}
+				characterInfo={characterInfo}
+				onChangeCharacter={onChangeCharacter}
+				countCharacters={countCharacters.info.count}
+				onCharacterInfo={onCharacterInfo}
+				characterEpisodes={characterEpisodes}
+				onChangeLocation={onChangeLocation}
+				onChangeEpisode={onChangeEpisode}
 			/>
 		)
-	}
 }
 
-const mapDispatchToProps = dispatch => {
-	return {
-		onCharacterInfo: (currentCharacter) => {
-			dispatch(getCharacterInfoThunkCreator(dispatch, currentCharacter))
-		},
-		onChangeCharacter: (character) => {
-			dispatch(currentCharacterActionCreator(character))
-		},
-		onChangeLocation: (location) => {
-			dispatch(currentLocationActionCreator(location))
-		},
-		onChangeEpisode: (episode) => {
-			dispatch(currentEpisodeActionCreator(episode))
-		}
-	}
-}
-
-const mapStateToProps = state => {
-	return {
-		characterInfo: state.charinfoPage.characterInfo,
-		currentCharacter: state.charinfoPage.currentCharacter,
-		countCharacters: state.charactersPage.allCharacters,
-		characterEpisodes: state.charinfoPage.characterEpisodes,
-		loading: state.charinfoPage.loading
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CharacterInfoContainer)
- 
+export default CharacterInfoContainer
