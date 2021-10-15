@@ -1,10 +1,11 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useRouteMatch } from 'react-router-dom'
 import Paginator from '../paginator/Paginator'
 import classes from './Locations.module.css'
 import LocationsFilter from './LocationsFilter/LocationsFilter'
 
 const Locations = (props) => {
+	let match = useRouteMatch()
 	if (props.allLocations.results) {
 		return (
 			<div className={classes.wrapper}>
@@ -16,7 +17,7 @@ const Locations = (props) => {
 					<div className={classes.content}>
 						{props.allLocations.results.map(loc => {
 							return (
-								<NavLink to='locinfo' className={classes.characterCard}
+								<NavLink to={`${match.url}/:${loc.id}`} className={classes.characterCard}
 								onClick={props.onChangeLocation.bind(null, loc.id)}>
 									<div className={classes.characterInfo}>
 										<div className={classes.characterName}>

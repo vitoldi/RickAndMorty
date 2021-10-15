@@ -1,10 +1,11 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useRouteMatch } from 'react-router-dom'
 import Paginator from '../paginator/Paginator'
 import classes from './Episodes.module.css'
 import EpisodesFilter from './EpisodesFilter/EpisodesFilter'
 
 const Episodes = (props) => {
+	let match = useRouteMatch()
 	if (props.allEpisodes.results) {
 		return (
 			<div className={classes.wrapper}>
@@ -17,7 +18,7 @@ const Episodes = (props) => {
 					<div className={classes.content}>
 						{props.allEpisodes.results.map(ep => {
 							return (
-								<NavLink to='epinfo' className={classes.characterCard}
+								<NavLink to={`${match.url}/:${ep.id}`} className={classes.characterCard}
 								onClick={props.onChangeEpisode.bind(null, ep.id)}>
 									<div className={classes.characterInfo}>
 										<div className={classes.characterName}>

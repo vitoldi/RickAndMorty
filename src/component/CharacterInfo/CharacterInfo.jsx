@@ -1,37 +1,40 @@
 import React from 'react'
 import classes from './CharacterInfo.module.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import nextImg from '../../images/next.png'
 import previosImg from '../../images/previos.png'
 
 const CharacterInfo = (props) => {
-	
+	const history = useHistory()
 		const changeCharacter = (action) => {
 			if (action === 'next') {
 				if (props.characterInfo.id < props.countCharacters) {
 					props.onChangeCharacter(props.characterInfo.id + 1)
 					props.onCharacterInfo(props.characterInfo.id + 1)
+					history.replace(`/characters/:${props.characterInfo.id + 1}`)
 				} else {
 					props.onChangeCharacter(1)
 					props.onCharacterInfo(1)
+					history.replace(`/characters/:1`)
 				}
 			} else if (action === 'previos') {
 				if (props.characterInfo.id > 1) {
 					props.onChangeCharacter(props.characterInfo.id - 1)
 					props.onCharacterInfo(props.characterInfo.id - 1)
+					history.replace(`/characters/:${props.characterInfo.id - 1}`)
 				} else {
 					props.onChangeCharacter(props.countCharacters)
 					props.onCharacterInfo(props.countCharacters)
+					history.replace(`/characters/:${props.countCharacters}`)
 				}
 			}
 		}
 
-		const toLocInfo = (url) => {
-			const urlArr = url.split('/')
-			this.props.onChangeLocation(urlArr[urlArr.length-1])
-		}
-
 		if (props.characterInfo.name) {
+			const originUrl = props.characterInfo.origin.url.split('/')
+			const originId = originUrl[originUrl.length - 1]
+			const locationUrl = props.characterInfo.location.url.split('/')
+			const locationId = locationUrl[locationUrl.length - 1]
 			return (
 				<div className={classes.wrapper}>
 					<div className={classes.charinfoCard}>
@@ -55,8 +58,9 @@ const CharacterInfo = (props) => {
 										<div>
 											{props.characterInfo.origin.name}
 										</div>
-									: <NavLink to='locinfo' className={classes.location__item}
-											onClick={toLocInfo.bind(null, props.characterInfo.origin.url)}>
+									: <NavLink to={`/locations/:${originId}`}
+											className={classes.location__item}
+											onClick={props.onChangeLocation.bind(null, originId)}>
 											{props.characterInfo.origin.name}
 										</NavLink>
 									}
@@ -66,8 +70,9 @@ const CharacterInfo = (props) => {
 										<div>
 											 {props.characterInfo.location.name}
 										</div>
-									: <NavLink className={classes.location__item} to='locinfo'
-											onClick={toLocInfo.bind(null, props.characterInfo.location.url)}>
+									: <NavLink className={classes.location__item} 
+										to={`/locations/:${locationId}`}
+										onClick={props.onChangeLocation.bind(null, locationId)}>
 											{props.characterInfo.location.name}
 										</NavLink>
 									}
@@ -79,7 +84,8 @@ const CharacterInfo = (props) => {
 									<div className={classes.episodes__numbers}>
 										{props.characterEpisodes.map((res) => {
 											return (
-												<NavLink className={classes.episodes__number__item} to='epinfo' onClick={props.onChangeEpisode.bind(null, res.id)}>
+												<NavLink className={classes.episodes__number__item} to={`/locations/:${res.id}`}
+													onClick={props.onChangeEpisode.bind(null, res.id)}>
 													{res.episode}
 												</NavLink>
 											)

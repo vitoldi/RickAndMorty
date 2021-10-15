@@ -7,6 +7,7 @@ import { locationsFilterActionCreator } from '../../../redux/locationsReducer'
 import { episodesFilterActionCreator } from '../../../redux/episodesReducer'
 import { getSearchThunkCreator } from '../../../redux/searchReducer'
 import { debounce } from "debounce"
+import { useHistory } from 'react-router-dom'
 
 const Search = (props) => {
 	const result = useSelector(state => state.searchPage.result)
@@ -26,20 +27,21 @@ const Search = (props) => {
 			dispatch(getSearchThunkCreator(dispatch, currentPage, filter, type))
 			}
 
-
+	const history = useHistory()
+	
 	const searchRequest = ({ name, type }) => {
 		if (type === '/characters' && name) {
 			onSearchFilterCharacters({name})
-			props.props.history.replace({ pathname: `/search` })
-			props.props.history.replace({ pathname: `/characters` })
+			history.replace(`/search`)
+			history.replace(`/characters`)
 		} else if (type === '/locations' && name) {
 			onSearchFilterLocations({ name })
-			props.props.history.replace({ pathname: `/search` })
-			props.props.history.replace({ pathname: `/locations` })
+			history.replace(`/search`)
+			history.replace(`/locations`)
 		} else if (type === '/episodes' && name) {
 			onSearchFilterEpisodes({ name })
-			props.props.history.replace({ pathname: `/search` })
-			props.props.history.replace({ pathname: `/episodes` })
+			history.replace(`/search`)
+			history.replace(`/episodes`)
 		}
 	}
 

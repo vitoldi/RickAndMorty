@@ -30,7 +30,7 @@ const CharacterInfoContainer = () => {
 
 	useEffect(() => {
 		onCharacterInfo(currentCharacter)
-	}, currentCharacter)
+	}, [currentCharacter])
 
 		if (loading) {
 			return <Preloader />

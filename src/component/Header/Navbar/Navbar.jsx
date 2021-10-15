@@ -18,7 +18,7 @@ const Navbar = () => {
 			<button className={classes.navButton} onClick={displayNav}>Navigation <img src={arrow} /></button>
 			<div className={classes.navMenu} id='navMenu'>
 				<div className={classes.navItem}>
-					<NavLink to='/main' onClick={displayNav}>Main</NavLink>
+					<NavLink to='/' onClick={displayNav}>Main</NavLink>
 				</div>
 				<div className={classes.navItem}>
 					<NavLink to='/characters' onClick={displayNav}>Characters</NavLink>

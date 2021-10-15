@@ -1,27 +1,31 @@
 import React from 'react'
 import classes from './LocationInfo.module.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import nextImg from '../../images/next.png'
 import previosImg from '../../images/previos.png'
 
 const LocationInfo = (props) => {
-
+	const history = useHistory()
 	const changeLocation = (action) => {
 		if (action === 'next') {
 			if (props.locationInfo.id < props.allLocations.info.count) {
 				props.onChangeLocation(props.locationInfo.id + 1)
 				props.onLocationInfo(props.locationInfo.id + 1)
+				history.replace(`/locations/:${props.locationInfo.id + 1}`)
 			} else {
 				props.onChangeLocation(1)
 				props.onLocationInfo(1)
+				history.replace(`/locations/:1`)
 			}
 		} else if (action === 'previos') {
 			if (props.locationInfo.id > 1) {
 				props.onChangeLocation(props.locationInfo.id - 1)
 				props.onLocationInfo(props.locationInfo.id - 1)
+				history.replace(`/locations/:${props.locationInfo.id - 1}`)
 			} else {
 				props.onChangeLocation(props.allLocations.info.count)
 				props.onLocationInfo(props.allLocations.info.count)
+				history.replace(`/locations/:${props.allLocations.info.count}`)
 			}
 	}}
 
@@ -48,7 +52,7 @@ const LocationInfo = (props) => {
 								? props.residents.map((res) => {
 									return (
 										<div className={classes.residents__item}>
-											<NavLink to='charinfo'
+											<NavLink to={`/characters/:${res.id}`}
 												onClick={props.onChangeCharacter.bind(null, res.id)}>
 												<div>
 													<img src={res.image} alt="Oops" width='100px' height='100px' />
@@ -68,11 +72,11 @@ const LocationInfo = (props) => {
 					</div>
 				<div className={classes.arrows}>
 					<div className={classes.previos} 
-					onClick={changeLocation.bind(null, 'previos')}>
+						onClick={changeLocation.bind(null, 'previos')}>
 						<img src={previosImg} width='75px' height='25px' />
 					</div>
 					<div className={classes.next} 
-					onClick={changeLocation.bind(null, 'next')}>
+						onClick={changeLocation.bind(null, 'next')}>
 						<img src={nextImg} width='75px' height='25px' />
 					</div>
 				</div>
