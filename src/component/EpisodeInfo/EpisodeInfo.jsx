@@ -6,6 +6,7 @@ import previosImg from '../../images/previos.png'
 
 const EpisodeInfo = (props) => {
 	const history = useHistory()
+	
 		const changeEpisode = (action) => {
 			if (action === 'next') {
 				if (props.episodeInfo.id < props.countEpisodes) {

@@ -4,8 +4,7 @@ const instance = axios.create({
 	baseURL: 'https://rickandmortyapi.com/api/'
 })
 
-export const getAllCharactersApi = (page, filter) => {
-	let url = `character/?page=${page}`
+const urlWithFilterCreator = (url, filter) => {
 	if (filter) {
 		for (let i in filter) {
 			if (filter[i]) {
@@ -13,9 +12,14 @@ export const getAllCharactersApi = (page, filter) => {
 			}
 		}
 	}
+	return url
+}
+
+export const getAllCharactersApi = (page, filter) => {
+	let url = `character/?page=${page}`
 
 	return (
-		instance.get(url)
+		instance.get(urlWithFilterCreator(url, filter))
 			.then(response => {
 				return response.data
 			})
@@ -33,16 +37,9 @@ export const getCharacterInfoApi = (id) => {
 
 export const getAllLocationsApi = (page, filter) => {
 	let url = `location/?page=${page}`
-	if (filter) {
-		for (let i in filter) {
-			if (filter[i]) {
-				url += `&${i}=${filter[i]}`
-			}
-		}
-	}
 
 	return (
-		instance.get(url)
+		instance.get(urlWithFilterCreator(url, filter))
 			.then(response => {
 				return response.data
 			})
@@ -61,16 +58,8 @@ export const getLocationInfoApi = (id) => {
 export const getAllEpisodesApi = (page, filter) => {
 	let url = `episode/?page=${page}`
 
-	if (filter) {
-		for (let i in filter) {
-			if (filter[i]) {
-				url += `&${i}=${filter[i]}`
-			}
-		}
-	}
-
 	return (
-		instance.get(url)
+		instance.get(urlWithFilterCreator(url, filter))
 			.then(response => {
 				return response.data
 			})

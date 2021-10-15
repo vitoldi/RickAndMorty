@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Header from './component/Header/Header'
 import Content from './component/Content/Content'
 import Footer from './component/Footer/Footer'
@@ -11,9 +11,11 @@ import CharactersContainer from './component/Characters/CharactersContainer'
 import CharacterInfoContainer from './component/CharacterInfo/CharacterInfoContainer'
 import LocationsContainer from './component/Locations/LocationsContainer'
 import LocationInfoContainer from './component/LocationInfo/LocationInfoContainer'
-import EpisodesContainer from './component/Episodes/EpisodesContainer'
-import EpisodesInfoContainer from './component/EpisodeInfo/EpisodeInfoContainer'
 import { useSelector } from 'react-redux'
+import Preloader from './component/Preloader/Preloader'
+
+const EpisodesContainer = React.lazy(() => import('./component/Episodes/EpisodesContainer'))
+const EpisodesInfoContainer = React.lazy(() => import('./component/EpisodeInfo/EpisodeInfoContainer'))
 
 const App = () => {
 	const characterId = useSelector(state => state.charinfoPage.currentCharacter)
@@ -24,15 +26,17 @@ const App = () => {
 			<div className='container'>
 				<Header />
 					<div className='content'>
-						<Switch>
-							<Route path={`/characters/:${characterId}`} render={() => <CharacterInfoContainer />} />
-							<Route path='/characters' render={() => <CharactersContainer />} />
-							<Route path={`/locations/:${locationId}`} render={() => <LocationInfoContainer />} />
-							<Route path='/locations' render={() => <LocationsContainer />} />
-							<Route path={`/episodes/:${episodeId}`} render={() => <EpisodesInfoContainer />} />
-							<Route path='/episodes' render={() => <EpisodesContainer />} />
-							<Route path='/' render={() => <Content />} />
-						</Switch>
+						<Suspense fallback={Preloader}>
+							<Switch>
+								<Route exact path='/characters' render={() => <CharactersContainer />} />
+								<Route exact path={`/characters/:${characterId}`} render={() => <CharacterInfoContainer />} />
+								<Route exact path={`/locations/:${locationId}`} render={() => <LocationInfoContainer />} />
+								<Route exact path='/locations' render={() => <LocationsContainer />} />
+								<Route exact path={`/episodes/:${episodeId}`} component={EpisodesInfoContainer} />
+								<Route exact path='/episodes' component={EpisodesContainer} />
+								<Route path='/' render={() => <Content />} />
+							</Switch>
+						</Suspense>
 					</div>
 				<Footer />
 			</div>

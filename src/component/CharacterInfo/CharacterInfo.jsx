@@ -6,6 +6,7 @@ import previosImg from '../../images/previos.png'
 
 const CharacterInfo = (props) => {
 	const history = useHistory()
+	
 		const changeCharacter = (action) => {
 			if (action === 'next') {
 				if (props.characterInfo.id < props.countCharacters) {
