@@ -4,7 +4,7 @@ const instance = axios.create({
 	baseURL: 'https://rickandmortyapi.com/api/'
 })
 
-const urlWithFilterCreator = (url, filter) => {
+export const urlWithFilterCreator = (url, filter) => {
 	if (filter) {
 		for (let i in filter) {
 			if (filter[i]) {
