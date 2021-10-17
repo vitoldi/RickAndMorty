@@ -35,7 +35,7 @@ const EpisodesFilter = (props) => {
 						<div className={classes.inputGroup}>
 							<div className={classes.inputGroup__input}>
 								<div>
-									<label htmlFor="name">Episode name</label>
+									<label htmlFor="name">Episode name:</label>
 								</div>
 								<div>
 									<Field id="name" name="name" placeholder="name..." />
@@ -44,7 +44,7 @@ const EpisodesFilter = (props) => {
 
 							<div className={classes.inputGroup__input}>
 								<div>
-									<label htmlFor="name">Episode code</label>
+									<label htmlFor="name">Episode code:</label>
 								</div>
 								<div>
 									<Field id="episode" name="episode" placeholder="episode..." />
