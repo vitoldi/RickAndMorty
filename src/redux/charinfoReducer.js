@@ -61,23 +61,23 @@ export const getCharacterInfoThunkCreator = (dispatch, currentCharacter) => {
 }
 }
 
-const startedActionCreator = () => ({ type: ADD_STARTED_CHAR })
+export const startedActionCreator = () => ({ type: ADD_STARTED_CHAR })
 
-const successActionCreator = (data) => ({
+export const successActionCreator = (data) => ({
 	type: ADD_SUCCESS_CHAR,
 	payload: {
 		...data
 	}
 })
 
-const changeCharacterEpisodesActionCreator = (data) => ({
+export const changeCharacterEpisodesActionCreator = (data) => ({
 	type: CHANGE_CHARACTER_EPISODES,
 	payload: {
 		characterEpisodes: [...data]
 	}
 })
 
-const failureActionCreator = (err) => ({
+export const failureActionCreator = (err) => ({
 	type: ADD_FAILURE_CHAR,
 	payload: {
 		err

@@ -52,16 +52,16 @@ export const getAllCharactersThunkCreator = (dispatch, currentPage, filter) => {
 }
 }
 
-const startedActionCreator = () => ({ type: ADD_STARTED })
+export const startedActionCreator = () => ({ type: ADD_STARTED })
 
-const successActionCreator = (data) => ({
+export const successActionCreator = (data) => ({
 	type: ADD_SUCCESS,
 	payload: {
 		...data
 	}
 })
 
-const failureActionCreator = (err) => ({
+export const failureActionCreator = (err) => ({
 	type: ADD_FAILURE,
 	payload: {
 		error: err
