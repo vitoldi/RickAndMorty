@@ -61,23 +61,23 @@ export const getLocationInfoThunkCreator = (dispatch, currentLocation) => {
 }
 }
 
-const startedActionCreator = () => ({ type: ADD_STARTED_LOCINFO })
+export const startedActionCreator = () => ({ type: ADD_STARTED_LOCINFO })
 
-const successActionCreator = (data) => ({
+export const successActionCreator = (data) => ({
 	type: ADD_SUCCESS_LOCINFO,
 	payload: {
 		...data
 	}
 })
 
-const changeResidentsActionCreator = (data) => ({
+export const changeResidentsActionCreator = (data) => ({
 	type: CHANGE_RESIDENTS,
 	payload: {
 		residents: [...data]
 	}
 })
 
-const failureActionCreator = (err) => ({
+export const failureActionCreator = (err) => ({
 	type: ADD_FAILURE_LOCINFO,
 	payload: {
 		err

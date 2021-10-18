@@ -50,16 +50,16 @@ export const getAllEpisodesThunkCreator = (dispatch, currentPage, filter) => {
 }
 }
 
-const startedActionCreator = () => ({ type: ADD_STARTED_EPISODES })
+export const startedActionCreator = () => ({ type: ADD_STARTED_EPISODES })
 
-const successActionCreator = (data) => ({
+export const successActionCreator = (data) => ({
 	type: ADD_SUCCESS_EPISODES,
 	payload: {
 		...data
 	}
 })
 
-const failureActionCreator = (err) => ({
+export const failureActionCreator = (err) => ({
 	type: ADD_FAILURE_EPISODES,
 	payload: {
 		error: err

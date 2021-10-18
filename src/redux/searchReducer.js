@@ -48,16 +48,16 @@ export const getSearchThunkCreator = (dispatch, currentPage, filter, type) => {
 }
 }
 
-const startedActionCreator = () => ({ type: ADD_STARTED_SEARCH })
+export const startedActionCreator = () => ({ type: ADD_STARTED_SEARCH })
 
-const successActionCreator = (data) => ({
+export const successActionCreator = (data) => ({
 	type: ADD_SUCCESS_SEARCH,
 	payload: {
 		...data
 	}
 })
 
-const failureActionCreator = (err) => ({
+export const failureActionCreator = (err) => ({
 	type: ADD_FAILURE_SEARCH,
 	payload: {
 		error: err

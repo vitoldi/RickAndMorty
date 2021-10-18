@@ -50,16 +50,16 @@ export const getAllLocationsThunkCreator = (dispatch, currentPage, filter) => {
 }
 }
 
-const startedActionCreator = () => ({ type: ADD_STARTED_LOCATIONS })
+export const startedActionCreator = () => ({ type: ADD_STARTED_LOCATIONS })
 
-const successActionCreator = (data) => ({
+export const successActionCreator = (data) => ({
 	type: ADD_SUCCESS_LOCATIONS,
 	payload: {
 		...data
 	}
 })
 
-const failureActionCreator = (err) => ({
+export const failureActionCreator = (err) => ({
 	type: ADD_FAILURE_LOCATIONS,
 	payload: {
 		error: err
