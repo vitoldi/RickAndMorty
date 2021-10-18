@@ -22,7 +22,7 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<div class={classes.year}>
+				<div className={classes.year}>
 					V.Logvin, 2021
 				</div>
 			</div>
