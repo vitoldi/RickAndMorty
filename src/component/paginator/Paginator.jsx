@@ -36,24 +36,25 @@ const Paginator = (props) => {
             </div>
             <div className={classes.paginator}>
                 <div className={classes.previos} onClick={changeCharactersArrow.bind(null, 'minus')}>
-                    <img src={arrowLeft} width='15px' height='20px'/>
+                    <img src={arrowLeft} width='15px' height='20px' alt="Oops"/>
                 </div>
                 <div className={classes.pageNumbers}>
                     {pages.map(num => {
                         if (Math.abs(props.currentPage - num) === 4) {
                             return '...'
-                        } else if (Math.abs(props.currentPage - num) > 4) {
-                            return
-                        } else return (
-                            <div className={classes.number} onClick={changeCharactersPage.bind(null, num)}>
+                        } else if (Math.abs(props.currentPage - num) < 4) {
+                            return (
+                                <div className={classes.number} onClick={changeCharactersPage.bind(null, num)}
+                                key={num}>
                                 {num === props.currentPage ?
                                     <div className={classes.currentPage}>{num}</div>
                                     : <div>{num}</div>}
                             </div>)
+                        } else return null                           
                     })}
                 </div>
                 <div className={classes.next} onClick={changeCharactersArrow.bind(null, 'plus')}>
-                    <img src={arrowRight} width='15px' height='20px'/>
+                    <img src={arrowRight} width='15px' height='20px' alt="Oops" />
                 </div>
             </div>
             <div className={classes.formik}>

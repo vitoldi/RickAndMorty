@@ -15,7 +15,7 @@ const displayNav = () => {
 const Navbar = () => {
 	return (
 		<div className={classes.navbar}>
-			<button className={classes.navButton} onClick={displayNav}>Navigation <img src={arrow} /></button>
+			<button className={classes.navButton} onClick={displayNav}>Navigation <img src={arrow} alt="Oops" /></button>
 			<div className={classes.navMenu} id='navMenu'>
 				<div className={classes.navItem}>
 					<NavLink to='/' onClick={displayNav}>Main</NavLink>

@@ -13,7 +13,7 @@ const Header = () => {
 			</div>
 			<div className={classes.imgLogo}>
 				<NavLink to='/'>
-					<img src={headerLogo} width='310px' height='100px' />
+					<img src={headerLogo} width='310px' height='100px' alt="Oops" />
 				</NavLink>
 			</div>
 			<div className={classes.search}>

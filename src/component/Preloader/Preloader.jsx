@@ -5,7 +5,7 @@ import classes from './Preloader.module.css'
 const Preloader = () => {
     return (
         <div className={classes.preloader}>
-            <img src={preloaderImg} />
+            <img src={preloaderImg} alt="Oops" />
         </div>
     )
 }

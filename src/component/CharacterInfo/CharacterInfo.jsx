@@ -44,7 +44,7 @@ const CharacterInfo = (props) => {
 								{props.characterInfo.name}
 							</div>
 							<div className={classes.image}>
-								<img src={props.characterInfo.image} />
+								<img src={props.characterInfo.image} alt="Oops" />
 							</div>
 							<div>
 								{props.characterInfo.status}
@@ -85,8 +85,10 @@ const CharacterInfo = (props) => {
 									<div className={classes.episodes__numbers}>
 										{props.characterEpisodes.map((res) => {
 											return (
-												<NavLink className={classes.episodes__number__item} to={`/locations/:${res.id}`}
-													onClick={props.onChangeEpisode.bind(null, res.id)}>
+												<NavLink className={classes.episodes__number__item} 
+													to={`/locations/:${res.id}`}
+													onClick={props.onChangeEpisode.bind(null, res.id)}
+													key = {res.id}>
 													{res.episode}
 												</NavLink>
 											)
@@ -98,11 +100,11 @@ const CharacterInfo = (props) => {
 					<div className={classes.arrows}>
 						<div className={classes.previos} 
 						onClick={changeCharacter.bind(null, 'previos')}>
-							<img src={previosImg} width='75px' height='25px' />
+							<img src={previosImg} alt="Oops" width='75px' height='25px' />
 						</div>
 						<div className={classes.next}
 						onClick={changeCharacter.bind(null, 'next')}>
-							<img src={nextImg} width='75px' height='25px'/>
+							<img src={nextImg} alt="Oops" width='75px' height='25px'/>
 						</div>
 					</div>
 				</div>)				

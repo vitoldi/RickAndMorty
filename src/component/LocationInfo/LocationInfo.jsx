@@ -51,7 +51,7 @@ const LocationInfo = (props) => {
 								{props.residents[0]
 								? props.residents.map((res) => {
 									return (
-										<div className={classes.residents__item}>
+										<div className={classes.residents__item} key={res.id}>
 											<NavLink to={`/characters/:${res.id}`}
 												onClick={props.onChangeCharacter.bind(null, res.id)}>
 												<div>
@@ -73,11 +73,11 @@ const LocationInfo = (props) => {
 				<div className={classes.arrows}>
 					<div className={classes.previos} 
 						onClick={changeLocation.bind(null, 'previos')}>
-						<img src={previosImg} width='75px' height='25px' />
+						<img src={previosImg} width='75px' height='25px' alt="Oops" />
 					</div>
 					<div className={classes.next} 
 						onClick={changeLocation.bind(null, 'next')}>
-						<img src={nextImg} width='75px' height='25px' />
+						<img src={nextImg} width='75px' height='25px' alt="Oops" />
 					</div>
 				</div>
 			</div>)				

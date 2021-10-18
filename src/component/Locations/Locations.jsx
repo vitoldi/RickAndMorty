@@ -18,7 +18,8 @@ const Locations = (props) => {
 						{props.allLocations.results.map(loc => {
 							return (
 								<NavLink to={`${match.url}/:${loc.id}`} className={classes.characterCard}
-								onClick={props.onChangeLocation.bind(null, loc.id)}>
+								onClick={props.onChangeLocation.bind(null, loc.id)}
+								key ={loc.id}>
 									<div className={classes.characterInfo}>
 										<div className={classes.characterName}>
 											Name: {loc.name}

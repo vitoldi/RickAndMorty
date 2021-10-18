@@ -20,7 +20,8 @@ const Characters = (props) => {
 							{props.allCharacters.results.map(char => {
 								return (
 									<NavLink to={`${match.url}/:${char.id}`} className={classes.characterCard}
-									onClick={props.onChangeCharacter.bind(null, char.id)}>
+									onClick={props.onChangeCharacter.bind(null, char.id)}
+									key = {char.id}>
 										<div className={classes.characterImg}>
 											<img src={char.image} alt="Oops" width='200px' height='200px' />
 										</div>

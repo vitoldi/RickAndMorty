@@ -5,7 +5,7 @@ import classes from './NotFound.module.css'
 const NotFound = () => {
     return (
         <div className={classes.notFound}>
-            <img src={notFoundImg} />
+            <img src={notFoundImg} alt="Oops" />
         </div>
     )
 }

@@ -62,7 +62,7 @@ const Search = (props) => {
 						<Field id="name" name="name" placeholder="Search..." list="searchName" />
 						<datalist id="searchName">
 							{result && result.results.map((el) => {
-								return <option value={el.name} />
+								return <option key={el.id} value={el.name} />
 							})}
 						</datalist>
 

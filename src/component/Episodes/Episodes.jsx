@@ -19,7 +19,8 @@ const Episodes = (props) => {
 						{props.allEpisodes.results.map(ep => {
 							return (
 								<NavLink to={`${match.url}/:${ep.id}`} className={classes.characterCard}
-								onClick={props.onChangeEpisode.bind(null, ep.id)}>
+								onClick={props.onChangeEpisode.bind(null, ep.id)}
+								key = {ep.id}>
 									<div className={classes.characterInfo}>
 										<div className={classes.characterName}>
 											Name: {ep.name}

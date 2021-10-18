@@ -13,12 +13,12 @@ const Footer = () => {
 					</div>
 					<div className={classes.contacts}>
 						<div className={classes.contactLink}>
-							<a href="https://github.com/vitoldi" target="_blank">
-								<img src={github} height='30px' width='30px' /><span>GitHub</span></a>
+							<a href="https://github.com/vitoldi" target="_blank" rel="noreferrer">
+								<img src={github} height='30px' width='30px' alt="Oops" /><span>GitHub</span></a>
 						</div>
 						<div className={classes.contactLink}>
-							<a href="https://www.linkedin.com/in/vitali-logvin-575001212" target="_blank">
-								<img src={linkedin} height='30px' width='30px' /><span>Linkedin</span></a>
+							<a href="https://www.linkedin.com/in/vitali-logvin-575001212" target="_blank" rel="noreferrer">
+								<img src={linkedin} height='30px' width='30px' alt="Oops" /><span>Linkedin</span></a>
 						</div>
 					</div>
 				</div>
