@@ -12,7 +12,7 @@ const Header = () => {
 				<Navbar />
 			</div>
 			<div className={classes.imgLogo}>
-				<NavLink to='/'>
+				<NavLink to='/RickAndMorty/'>
 					<img src={headerLogo} width='310px' height='100px' alt="Oops" />
 				</NavLink>
 			</div>

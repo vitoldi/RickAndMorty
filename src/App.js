@@ -28,13 +28,13 @@ const App = () => {
 					<div className='content'>
 						<Suspense fallback={<Preloader />}>
 							<Switch>
-								<Route exact path='/characters' render={() => <CharactersContainer />} />
-								<Route exact path={`/characters/:${characterId}`} render={() => <CharacterInfoContainer />} />
-								<Route exact path={`/locations/:${locationId}`} render={() => <LocationInfoContainer />} />
-								<Route exact path='/locations' render={() => <LocationsContainer />} />
-								<Route exact path={`/episodes/:${episodeId}`} render={() => <EpisodesInfoContainer />} />
-								<Route exact path='/episodes' render={() => <EpisodesContainer />} />
-								<Route path='/' render={() => <Content />} />
+								<Route exact path='/RickAndMorty/characters' render={() => <CharactersContainer />} />
+								<Route exact path={`/RickAndMorty/characters/:${characterId}`} render={() => <CharacterInfoContainer />} />
+								<Route exact path={`/RickAndMorty/locations/:${locationId}`} render={() => <LocationInfoContainer />} />
+								<Route exact path='/RickAndMorty/locations' render={() => <LocationsContainer />} />
+								<Route exact path={`/RickAndMorty/episodes/:${episodeId}`} render={() => <EpisodesInfoContainer />} />
+								<Route exact path='/RickAndMorty/episodes' render={() => <EpisodesContainer />} />
+								<Route path='/RickAndMorty/' render={() => <Content />} />
 							</Switch>
 						</Suspense>
 					</div>

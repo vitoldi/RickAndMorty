@@ -18,16 +18,16 @@ const Navbar = () => {
 			<button className={classes.navButton} onClick={displayNav}>Navigation <img src={arrow} alt="Oops" /></button>
 			<div className={classes.navMenu} id='navMenu'>
 				<div className={classes.navItem}>
-					<NavLink to='/' onClick={displayNav}>Main</NavLink>
+					<NavLink to='/RickAndMorty/' onClick={displayNav}>Main</NavLink>
 				</div>
 				<div className={classes.navItem}>
-					<NavLink to='/characters' onClick={displayNav}>Characters</NavLink>
+					<NavLink to='/RickAndMorty/characters' onClick={displayNav}>Characters</NavLink>
 				</div>
 				<div className={classes.navItem}>
-					<NavLink to='/locations' onClick={displayNav}>Locations</NavLink>
+					<NavLink to='/RickAndMorty/locations' onClick={displayNav}>Locations</NavLink>
 				</div>
 				<div className={classes.navItem}>
-					<NavLink to='/episodes' onClick={displayNav}>Episodes</NavLink>
+					<NavLink to='/RickAndMorty/episodes' onClick={displayNav}>Episodes</NavLink>
 				</div>
 			</div>
 		</div>

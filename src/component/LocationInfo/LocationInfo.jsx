@@ -11,21 +11,21 @@ const LocationInfo = (props) => {
 			if (props.locationInfo.id < props.allLocations.info.count) {
 				props.onChangeLocation(props.locationInfo.id + 1)
 				props.onLocationInfo(props.locationInfo.id + 1)
-				history.replace(`/locations/:${props.locationInfo.id + 1}`)
+				history.replace(`/RickAndMorty/locations/:${props.locationInfo.id + 1}`)
 			} else {
 				props.onChangeLocation(1)
 				props.onLocationInfo(1)
-				history.replace(`/locations/:1`)
+				history.replace(`/RickAndMorty/locations/:1`)
 			}
 		} else if (action === 'previos') {
 			if (props.locationInfo.id > 1) {
 				props.onChangeLocation(props.locationInfo.id - 1)
 				props.onLocationInfo(props.locationInfo.id - 1)
-				history.replace(`/locations/:${props.locationInfo.id - 1}`)
+				history.replace(`/RickAndMorty/locations/:${props.locationInfo.id - 1}`)
 			} else {
 				props.onChangeLocation(props.allLocations.info.count)
 				props.onLocationInfo(props.allLocations.info.count)
-				history.replace(`/locations/:${props.allLocations.info.count}`)
+				history.replace(`/RickAndMorty/locations/:${props.allLocations.info.count}`)
 			}
 	}}
 
@@ -52,7 +52,7 @@ const LocationInfo = (props) => {
 								? props.residents.map((res) => {
 									return (
 										<div className={classes.residents__item} key={res.id}>
-											<NavLink to={`/characters/:${res.id}`}
+											<NavLink to={`/RickAndMorty/characters/:${res.id}`}
 												onClick={props.onChangeCharacter.bind(null, res.id)}>
 												<div>
 													<img src={res.image} alt="Oops" width='100px' height='100px' />

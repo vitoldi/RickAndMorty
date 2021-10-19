@@ -12,21 +12,21 @@ const EpisodeInfo = (props) => {
 				if (props.episodeInfo.id < props.countEpisodes) {
 					props.onChangeEpisode(props.episodeInfo.id + 1)
 					props.onEpisodeInfo(props.episodeInfo.id + 1)
-					history.replace(`/episodes/:${props.episodeInfo.id + 1}`)
+					history.replace(`/RickAndMorty/episodes/:${props.episodeInfo.id + 1}`)
 				} else {
 					props.onChangeEpisode(1)
 					props.onEpisodeInfo(1)
-					history.replace(`/episodes/:1`)
+					history.replace(`/RickAndMorty/episodes/:1`)
 				}
 			} else if (action === 'previos') {
 				if (props.episodeInfo.id > 1) {
 					props.onChangeEpisode(props.episodeInfo.id - 1)
 					props.onEpisodeInfo(props.episodeInfo.id - 1)
-					history.replace(`/episodes/:${props.episodeInfo.id - 1}`)
+					history.replace(`/RickAndMorty/episodes/:${props.episodeInfo.id - 1}`)
 				} else {
 					props.onChangeEpisode(props.countEpisodes)
 					props.onEpisodeInfo(props.countEpisodes)
-					history.replace(`/episodes/:${props.countEpisodes}`)
+					history.replace(`/RickAndMorty/episodes/:${props.countEpisodes}`)
 				}
 			}
 		}
@@ -53,7 +53,7 @@ const EpisodeInfo = (props) => {
 									{props.episodeCharacters.map((res) => {
 										return (
 											<div className={classes.residents__item} key={res.id}>
-												<NavLink to={`/characters/:${res.id}`}
+												<NavLink to={`/RickAndMorty/characters/:${res.id}`}
 													onClick={props.onChangeCharacter.bind(null, res.id)}>
 													<div>
 														<img src={res.image} alt="Oops" width='100px' height='100px' />

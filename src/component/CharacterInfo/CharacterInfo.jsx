@@ -12,21 +12,21 @@ const CharacterInfo = (props) => {
 				if (props.characterInfo.id < props.countCharacters) {
 					props.onChangeCharacter(props.characterInfo.id + 1)
 					props.onCharacterInfo(props.characterInfo.id + 1)
-					history.replace(`/characters/:${props.characterInfo.id + 1}`)
+					history.replace(`/RickAndMorty/characters/:${props.characterInfo.id + 1}`)
 				} else {
 					props.onChangeCharacter(1)
 					props.onCharacterInfo(1)
-					history.replace(`/characters/:1`)
+					history.replace(`/RickAndMorty/characters/:1`)
 				}
 			} else if (action === 'previos') {
 				if (props.characterInfo.id > 1) {
 					props.onChangeCharacter(props.characterInfo.id - 1)
 					props.onCharacterInfo(props.characterInfo.id - 1)
-					history.replace(`/characters/:${props.characterInfo.id - 1}`)
+					history.replace(`/RickAndMorty/characters/:${props.characterInfo.id - 1}`)
 				} else {
 					props.onChangeCharacter(props.countCharacters)
 					props.onCharacterInfo(props.countCharacters)
-					history.replace(`/characters/:${props.countCharacters}`)
+					history.replace(`/RickAndMorty/characters/:${props.countCharacters}`)
 				}
 			}
 		}
@@ -59,7 +59,7 @@ const CharacterInfo = (props) => {
 										<div>
 											{props.characterInfo.origin.name}
 										</div>
-									: <NavLink to={`/locations/:${originId}`}
+									: <NavLink to={`/RickAndMorty/locations/:${originId}`}
 											className={classes.location__item}
 											onClick={props.onChangeLocation.bind(null, originId)}>
 											{props.characterInfo.origin.name}
@@ -72,7 +72,7 @@ const CharacterInfo = (props) => {
 											 {props.characterInfo.location.name}
 										</div>
 									: <NavLink className={classes.location__item} 
-										to={`/locations/:${locationId}`}
+										to={`/RickAndMorty/locations/:${locationId}`}
 										onClick={props.onChangeLocation.bind(null, locationId)}>
 											{props.characterInfo.location.name}
 										</NavLink>
@@ -86,7 +86,7 @@ const CharacterInfo = (props) => {
 										{props.characterEpisodes.map((res) => {
 											return (
 												<NavLink className={classes.episodes__number__item} 
-													to={`/locations/:${res.id}`}
+													to={`/RickAndMorty/episodes/:${res.id}`}
 													onClick={props.onChangeEpisode.bind(null, res.id)}
 													key = {res.id}>
 													{res.episode}
