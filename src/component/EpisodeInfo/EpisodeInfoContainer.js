@@ -5,7 +5,7 @@ import { currentCharacterActionCreator } from '../../redux/charinfoReducer'
 import React, {useEffect} from 'react'
 import Preloader from '../Preloader/Preloader'
 
-const EpisodeInfoContainer = (props) => {
+const EpisodeInfoContainer = () => {
 	const dispatch = useDispatch()
 
 	const episodeInfo = useSelector(state => state.episodeInfoPage.episodeInfo)

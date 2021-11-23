@@ -9,7 +9,7 @@ import { getSearchThunkCreator } from '../../../redux/searchReducer'
 import { debounce } from "debounce"
 import { useHistory } from 'react-router-dom'
 
-const Search = (props) => {
+const Search = () => {
 	const result = useSelector(state => state.searchPage.result)
 
 	const dispatch = useDispatch()

@@ -5,7 +5,7 @@ import { currentCharacterActionCreator } from '../../redux/charinfoReducer'
 import React, { useEffect } from 'react'
 import Preloader from '../Preloader/Preloader'
 
-const LocationInfoContainer = (props) => {
+const LocationInfoContainer = () => {
 	const locationInfo = useSelector(state => state.locationInfoPage.locationInfo)
 	const currentLocation = useSelector(state => state.locationInfoPage.currentLocation)
 	const allLocations = useSelector(state => state.locationsPage.allLocations)

@@ -26,10 +26,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build --branch gh-pages"
+    "deploy": "gh-pages -d build --branch gh-pages",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +51,17 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^12.1.2"
+    "@testing-library/react": "^12.1.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.27.1",
+    "husky": "^7.0.4"
+  },
+  "husky": {    
+    "hooks": {      
+      "pre-commit": "lint-staged"
+    }  
+ },
+  "lint-staged": {
+    "*.(js|jsx)": ["npm run lint:write", "npm run test"]
   }
 }

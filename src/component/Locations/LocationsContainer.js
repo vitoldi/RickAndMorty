@@ -7,7 +7,7 @@ import NotFound from '../NotFound/NotFound'
 import LocationsFilter from './LocationsFilter/LocationsFilter'
 import Preloader from '../Preloader/Preloader'
 
-const LocationsContainer = (props) => {
+const LocationsContainer = () => {
 	const allLocations = useSelector(state => state.locationsPage.allLocations)
 	const currentPage = useSelector(state => state.locationsPage.currentPage)
 	const filter = useSelector(state => state.locationsPage.filter)

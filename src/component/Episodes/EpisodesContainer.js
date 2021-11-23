@@ -7,7 +7,7 @@ import EpisodesFilter from './EpisodesFilter/EpisodesFilter'
 import NotFound from '../NotFound/NotFound'
 import Preloader from '../Preloader/Preloader'
 
-const EpisodesContainer = (props) => {
+const EpisodesContainer = () => {
 	const dispatch = useDispatch()
 
 	const onEpisodes = (currentPage, filter) => {
